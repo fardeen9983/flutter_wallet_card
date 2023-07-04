@@ -9,12 +9,13 @@ class FlutterWalletCard {
   static Future<bool> createPassFromUri(
       {required String scheme,
       required String host,
+       required int port,
       required String path,
       Map<String, dynamic>? parameters}) async {
     if (parameters == null) parameters = new Map();
 
     final Uri requestUri = Uri(
-        scheme: scheme, host: host, path: path, queryParameters: parameters);
+        scheme: scheme,port:port, host: host, path: path, queryParameters: parameters);
 
     try {
       PassFile passFile = await Pass().saveFromUrl(url: requestUri.toString());
